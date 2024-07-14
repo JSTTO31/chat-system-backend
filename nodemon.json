@@ -1,0 +1,6 @@
+{
+    "env": {
+        "MONGO_URI" : "mongodb+srv://joshuasottoelyen:a9CuFagxEztdmUi7@cluster0.7t20o4l.mongodb.net/?retryWrites=true&w=majority",
+        "SECRET" : "a9CuFagxEztdmUi7"
+    }
+}
