@@ -3,6 +3,7 @@ const http = require('http')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 
+require("dotenv").config()
 
 mongoose.connect(process.env.MONGO_URI)
 const app = express()
@@ -14,7 +15,7 @@ const conversationRoutes = require('./src/routes/conversations')
 const socket = require('socket.io')
 const io = new socket.Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: process.env.FRONTEND_URL,
         methods: ['GET', 'POST'],
         allowedHeaders: 'Origin, X-Request-With, Content-Type, Accept, Authorization'
     }, 
@@ -28,7 +29,7 @@ io.on('connection', events)
 
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
+    res.header('Access-Control-Allow-Origin', process.env.FRONTEND_URL)
     res.header('Access-Control-Allow-Headers', 'Origin, X-Request-With, Content-Type, Accept, Authorization')
     res.header('Access-Control-Allow-Method', '*')
 
