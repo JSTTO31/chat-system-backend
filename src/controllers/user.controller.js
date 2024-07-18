@@ -68,7 +68,6 @@ exports.login = async (req, res) => {
         if(!compare) return res.status(422).json({errors: {password: {message: 'Invalid password. Please try again.'}}})
         user = user.toObject()
         delete user.password
-        console.log(user);
         const token = jwt.sign({userData: user}, process.env.SECRET)
         res.status(200).json({
             user, 
